@@ -1,5 +1,6 @@
 package hellotvxlet;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.tv.xlet.*;
 import org.havi.ui.*;
@@ -20,7 +21,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     private HGraphicButton img4 =new HGraphicButton();
     private HGraphicButton img5 =new HGraphicButton();
     
-    private String chosenImg;
+    private String chosenImg = "Intro_illu_1.png";;
     
     public HelloTVXlet() {
         
@@ -29,7 +30,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     public void initXlet(XletContext context) {
         // SCENE AANMAKEN
         HScene scene = HSceneFactory.getInstance().getDefaultHScene();
-      
+        
         // ALLE BUTTONS AANMAKEN
         btnPlay.setBounds(290,430,164,83);
         btnPlay.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_btn_play.png"),128);
@@ -51,7 +52,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         
       //ACHTERGROND
       bgImage = new MijnComponent("Intro_bg_test.png", 0, -35);
-      
+        
       //RICHTING INPUT BUTTONS
       img1.setFocusTraversal( null, btnPlay, img5, img2);
       img2.setFocusTraversal(null, btnPlay, img1, img3);
@@ -100,6 +101,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         if(e.getActionCommand().equals("btnPlay_actioned"))
         {
             System.out.println("CLICKED BUTTON PLAY");
+            StartGame();
         }
         if(e.getActionCommand().equals("image1_actioned"))
         {
@@ -126,11 +128,10 @@ public class HelloTVXlet implements Xlet, HActionListener {
             chosenImg = "Intro_illu_5.png";
             System.out.println("CHOSEN IMAGE 5");
         }
-        
 //        System.out.println(chosenImg);
     }
     public void startXlet() {
-        
+       
     }
 
     public void pauseXlet() {
@@ -139,5 +140,19 @@ public class HelloTVXlet implements Xlet, HActionListener {
 
     public void destroyXlet(boolean unconditional) {
      
+    }
+
+    private void StartGame() {
+       System.out.println("Game started");
+       System.out.println(chosenImg);
+       
+        HScene bgScene = HSceneFactory.getInstance().getDefaultHScene();
+
+        MijnComponent GameScene = new MijnComponent("Play_mockup.png", 0, -15);
+        bgScene.add(GameScene);
+        bgScene.validate();
+        bgScene.popToFront(GameScene);
+        bgScene.setVisible(true);
+        bgScene.repaint();
     }
 }
