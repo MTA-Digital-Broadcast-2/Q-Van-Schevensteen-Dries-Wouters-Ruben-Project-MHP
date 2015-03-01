@@ -154,5 +154,26 @@ public class HelloTVXlet implements Xlet, HActionListener {
         scene.validate();
         scene.setVisible(true);
         scene.repaint();
+        
+        ShowPuzzle();
+    }
+    
+    public void ShowPuzzle()
+    {
+        // 2D ARRAY VOOR IMAGES
+        int[][] imgArray = {
+                     {0, 1, 2, 3},
+                     {4, 5, 6, 7},
+                     {8, 9, 10, 11},
+                     {12, 13, 14, 15}  };
+        
+        for(int i = 0; i < imgArray.length; i++)
+        {
+            for(int j = 0; j < imgArray[i].length; j++)
+            {
+                System.out.print(imgArray[i][j] +  "    ");
+            }
+            System.out.println();
+        }
     }
 }
