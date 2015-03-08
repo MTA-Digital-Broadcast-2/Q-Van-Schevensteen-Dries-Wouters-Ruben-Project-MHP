@@ -1,5 +1,6 @@
 package hellotvxlet;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.tv.xlet.*;
 import org.havi.ui.*;
@@ -8,126 +9,43 @@ import java.awt.event.*;
 
 public class HelloTVXlet implements Xlet, HActionListener {
     
-    // SCENE & BACKGROUND
-    private MijnComponent bgImage;
     private HScene scene;
-    
-    // ALLE BUTTONS
-    private HGraphicButton btnPlay =new HGraphicButton();
-    private HGraphicButton img1 =new HGraphicButton();
-    private HGraphicButton img2 =new HGraphicButton();
-    private HGraphicButton img3 =new HGraphicButton();
-    private HGraphicButton img4 =new HGraphicButton();
-    private HGraphicButton img5 =new HGraphicButton();
-    
-    private String chosenImg = "Intro_illu_1.png";;
+   
+    private MijnComponent background;
+
+    private HGraphicButton[] smallIllustrationButtons = new HGraphicButton[5];
+    private String[] smallIllustrationPaths = {"Intro_illu_1.png", "Intro_illu_2.png", "Intro_illu_3.png", "Intro_illu_4.png", "Intro_illu_5.png"};
+    private String chosenIllustrationPath = smallIllustrationPaths[0];
     
     public HelloTVXlet() {
         
     }
 
     public void initXlet(XletContext context) {
-        
-        // SCENE AANMAKEN 
         scene = HSceneFactory.getInstance().getDefaultHScene();
-        
-        // ALLE BUTTONS AANMAKEN
-        btnPlay.setBounds(290,430,164,83);
-        btnPlay.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_btn_play.png"),128);
-        
-        img1.setBounds(20,250,138,139);
-        img1.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_illu_1.png"),128);
-        
-        img2.setBounds(158,250,134,139);
-        img2.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_illu_2.png"),128);
-        
-        img3.setBounds(292,250,134,139);
-        img3.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_illu_3.png"),128);
-        
-        img4.setBounds(426,250,134,139);
-        img4.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_illu_4.png"),128);
-        
-        img5.setBounds(560,250,138,139);
-        img5.setGraphicContent(Toolkit.getDefaultToolkit().getImage("Intro_illu_5.png"),128);
-        
-        //ACHTERGROND
-         bgImage = new MijnComponent("Intro_bg_test.png", 0, -35);
-        
-          //RICHTING INPUT BUTTONS
-          img1.setFocusTraversal( null, btnPlay, img5, img2);
-          img2.setFocusTraversal(null, btnPlay, img1, img3);
-          img3.setFocusTraversal(null, btnPlay, img2, img4);
-          img4.setFocusTraversal(null, btnPlay, img3, img5);
-          img5.setFocusTraversal(null, btnPlay, img4, img1);
-          btnPlay.setFocusTraversal(img3, img3, null, null);
 
-          //ADD EVERYTHING TO SCENE
-          scene.add(img1);
-          scene.add(img2);
-          scene.add(img3);
-          scene.add(img4);
-          scene.add(img5);
-          scene.add(btnPlay);
-          scene.add(bgImage);
-
-          //ACTION NAMES MEEGEVEN
-          btnPlay.setActionCommand("btnPlay_actioned");
-          btnPlay.addHActionListener(this);
-          btnPlay.requestFocus();
-
-          img1.setActionCommand("image1_actioned");
-          img1.addHActionListener(this);
-          img2.setActionCommand("image2_actioned");
-          img2.addHActionListener(this);
-          img3.setActionCommand("image3_actioned");
-          img3.addHActionListener(this);
-          img4.setActionCommand("image4_actioned");
-          img4.addHActionListener(this);
-          img5.setActionCommand("image5_actioned");
-          img5.addHActionListener(this);
-
-          scene.validate();
-          scene.setVisible(true);
-          btnPlay.setVisible(true);
-          img1.setVisible(true);
-          img2.setVisible(true);
-          img3.setVisible(true);
-          img4.setVisible(true);
-          img5.setVisible(true);
+        startScreen();
+        
+        scene.validate();
+        scene.setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        if(e.getActionCommand().equals("btnPlay_actioned"))
-        {
-            System.out.println("CLICKED BUTTON PLAY");
-            StartGame();
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
+        
+        // start screen
+        if(e.getActionCommand().equals("playButton")) gameScreen();
+        
+        for (int i = 0; i < smallIllustrationPaths.length; i++) {
+            if(e.getActionCommand().equals("smallIllustrationButton" + i)) {
+                chosenIllustrationPath = smallIllustrationPaths[i];
+                System.out.println(chosenIllustrationPath);
+            }
         }
-        if(e.getActionCommand().equals("image1_actioned"))
-        {
-            chosenImg = "Intro_illu_1.png";
-            System.out.println("CHOSEN IMAGE 1");
-        }
-        if(e.getActionCommand().equals("image2_actioned"))
-        {
-            chosenImg = "Intro_illu_2.png";
-            System.out.println("CHOSEN IMAGE 2");
-        }
-        if(e.getActionCommand().equals("image3_actioned"))
-        {
-            chosenImg = "Intro_illu_3.png";
-            System.out.println("CHOSEN IMAGE 3");
-        }
-        if(e.getActionCommand().equals("image4_actioned"))
-        {
-            chosenImg = "Intro_illu_4.png";
-            System.out.println("CHOSEN IMAGE 4");
-        }
-        if(e.getActionCommand().equals("image5_actioned"))
-        {
-            chosenImg = "Intro_illu_5.png";
-            System.out.println("CHOSEN IMAGE 5");
-        }
+        
+        // game screen
+        if(e.getActionCommand().equals("backButton")) startScreen();
+        if(e.getActionCommand().equals("restartButton")) gameScreen();
     }
     public void startXlet() {
        
@@ -140,38 +58,106 @@ public class HelloTVXlet implements Xlet, HActionListener {
     public void destroyXlet(boolean unconditional) {
      
     }
-
-    private void StartGame() {
-        System.out.println("Game started");
-        System.out.println(chosenImg);
-       
-        // ALLES VAN SCENE HALEN (MENU)
-        scene.removeAll();
-
-        // ACHTERGROND AANMAKEN
-        MijnComponent GameScene = new MijnComponent("Play_mockup.png", 0, -15);
-        scene.add(GameScene);
-        scene.validate();
-        scene.setVisible(true);
-        scene.repaint();
+    
+    private void startScreen() {
+        System.out.println("Start Screen");
         
-        ShowPuzzle();
+        scene.removeAll();
+        
+        HGraphicButton playButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_intro_play.png"));
+        playButton.setBordersEnabled(false);
+        playButton.setBounds(290, 430, 164, 83);
+        playButton.setActionCommand("playButton");
+        playButton.addHActionListener(this);
+        scene.add(playButton);
+        playButton.requestFocus();
+
+        for (int i = 0; i < smallIllustrationButtons.length; i++) {
+            smallIllustrationButtons[i] = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("Intro_illu_" + (i + 1) +".png"));
+            smallIllustrationButtons[i].setBordersEnabled(false);
+            scene.add(smallIllustrationButtons[i]);
+            
+            smallIllustrationButtons[i].setActionCommand("smallIllustrationButton" + i);
+            smallIllustrationButtons[i].addHActionListener(this);
+        }
+        
+        for (int i = 0; i < smallIllustrationButtons.length; i++) {
+            HGraphicButton btn = smallIllustrationButtons[i];
+            switch(i) {
+                case 0:
+                    btn.setBounds(20, 250, 138, 139);
+                    btn.setFocusTraversal( null, playButton, smallIllustrationButtons[4], smallIllustrationButtons[1]);
+                    break;
+                case 1:
+                    btn.setBounds(158,250,134,139);
+                    btn.setFocusTraversal(null, playButton, smallIllustrationButtons[0], smallIllustrationButtons[2]);
+                    break;
+                case 2:
+                    btn.setBounds(292,250,134,139);
+                    btn.setFocusTraversal(null, playButton, smallIllustrationButtons[1], smallIllustrationButtons[3]);
+                    break;
+                case 3:
+                    btn.setBounds(426,250,134,139);
+                    btn.setFocusTraversal(null, playButton, smallIllustrationButtons[2], smallIllustrationButtons[4]);
+                    break;
+                case 4:
+                    btn.setBounds(560,250,138,139);
+                    btn.setFocusTraversal(null, playButton, smallIllustrationButtons[3], smallIllustrationButtons[0]);
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        playButton.setFocusTraversal(smallIllustrationButtons[0], smallIllustrationButtons[4], null, null);
+        
+        background = new MijnComponent("Intro_bg_test.png", 0, -35);
+        scene.add(background);
+        
+        scene.repaint();
+    }
+
+    private void gameScreen() {
+        System.out.println("Game Screen");
+       
+        scene.removeAll();
+                
+        HGraphicButton backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
+        backButton.setBordersEnabled(false);
+        backButton.setBounds(210, 430, 164, 83);
+        backButton.setActionCommand("backButton");
+        backButton.addHActionListener(this);
+        scene.add(backButton);
+        backButton.requestFocus();
+        
+        HGraphicButton restartButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_restart.png"));
+        restartButton.setBordersEnabled(false);
+        restartButton.setBounds(370, 430, 164, 83);
+        restartButton.setActionCommand("restartButton");
+        restartButton.addHActionListener(this);
+        scene.add(restartButton);
+        
+        backButton.setFocusTraversal(null, null, null, restartButton);
+        restartButton.setFocusTraversal(null, null, backButton, null);
+        
+        background = new MijnComponent("Play_mockup.png", 0, -35);
+        scene.add(background);
+ 
+        scene.repaint();
     }
     
-    public void ShowPuzzle()
-    {
-        // 2D ARRAY VOOR IMAGES
-        int[][] imgArray = {
-                     {0, 1, 2, 3},
-                     {4, 5, 6, 7},
-                     {8, 9, 10, 11},
-                     {12, 13, 14, 15}  };
-        
-        for(int i = 0; i < imgArray.length; i++)
+    private void ShowPuzzle() {
+        int[][] imgArray =
         {
-            for(int j = 0; j < imgArray[i].length; j++)
-            {
-                System.out.print(imgArray[i][j] +  "    ");
+             {0, 1, 2, 3},
+             {4, 5, 6, 7},
+             {8, 9, 10, 11},
+             {12, 13, 14, 15}
+        };
+        
+        for(int i = 0; i < imgArray.length; i++) {
+            for(int j = 0; j < imgArray[i].length; j++) {
+                System.out.print(imgArray[i][j] +  ", ");
             }
             System.out.println();
         }

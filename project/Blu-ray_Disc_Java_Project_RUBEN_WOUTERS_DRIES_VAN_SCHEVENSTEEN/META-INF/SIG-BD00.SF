@@ -1,7 +1,7 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: /wbpyDadIYLlVB6O7ysDaBtbMlA=
+SHA1-Digest-Manifest: dyzlLEWj/RlumdyBLx36WVMLYWQ=
 
 Name: btn_intro_play.png
 SHA1-Digest: lMUqjZGmOZXTj8GYnSb9gJ3ZPGA=
@@ -10,16 +10,13 @@ Name: btn_intro_play_down.png
 SHA1-Digest: 59sWGt2IASQ2vOWlfbit/CtQR6U=
 
 Name: hellotvxlet/MijnComponent.class
-SHA1-Digest: 26cn1eRVEFvqDPauIPuHlVtToOo=
-
-Name: Game_over_mockup.png
-SHA1-Digest: a8xz1NZQR+7KhhLnHF8qdlTbHZo=
+SHA1-Digest: +TC7WOy1ruv+En9JDhJSSJPWmnA=
 
 Name: Intro_illu_2.png
 SHA1-Digest: cUVK3dphxnkUEZVmgC8fzDuuEQc=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: +2CkdLiZKfDakvMu+fjj7BotkWw=
+SHA1-Digest: chFCint4VwJZupMRuKj/cbXx714=
 
 Name: Intro_illu_3.png
 SHA1-Digest: 96x3QtbUAGnOqcVXk5OLGumaog0=
@@ -27,14 +24,11 @@ SHA1-Digest: 96x3QtbUAGnOqcVXk5OLGumaog0=
 Name: btn_back.png
 SHA1-Digest: XYY6Oov9iC5hbN1g6vSOVORX2bQ=
 
-Name: Play_mockup.png
-SHA1-Digest: 2vPmmJeVby085ZGUgHqkcX0da/U=
-
 Name: btn_back_down.png
 SHA1-Digest: GJM+RnV5rK7I9++kH00zMU89tpE=
 
 Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+SHA1-Digest: Iz2EmX/hIvVXbO3PX0e6hezSY28=
 
 Name: Intro_illu_5.png
 SHA1-Digest: lbkchl49FK1vbADq6qAseGT1UV4=
@@ -45,18 +39,15 @@ SHA1-Digest: mh0W93+Y+14/RraEc51vV1bqIq8=
 Name: Intro_illu_4.png
 SHA1-Digest: VFcrGk8beajm/WIzh7dZf3pz+rs=
 
-Name: Intro_mockup.png
-SHA1-Digest: KCCeLqaKRPf5OESepI+miVJ5wMM=
-
 Name: btn_restart.png
 SHA1-Digest: VkRMr5QzOERAj1+rA6B8ZLe3ND4=
 
 Name: Thumbs.db
-SHA1-Digest: BpOMKS2owxY09C9srcYKj5UK9Kc=
-
-Name: Intro_illu_1.png
-SHA1-Digest: JM8TPSHUmxUetBBO9eCjKhFfiBg=
+SHA1-Digest: /Pg07yH0jNAl/oaKCC6nIla/OTI=
 
 Name: btn_restart_down.png
 SHA1-Digest: I3UP1yuztj4+lYO+Px10WuwWuJo=
+
+Name: Intro_illu_1.png
+SHA1-Digest: JM8TPSHUmxUetBBO9eCjKhFfiBg=
 
