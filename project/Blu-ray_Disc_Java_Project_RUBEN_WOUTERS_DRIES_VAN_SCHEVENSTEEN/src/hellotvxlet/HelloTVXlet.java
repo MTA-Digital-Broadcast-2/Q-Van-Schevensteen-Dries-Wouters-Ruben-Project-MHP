@@ -11,7 +11,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     
     private HScene scene;
    
-    private MijnComponent background;
+    private MijnComponent background, imgBlock;
 
     private HGraphicButton[] smallIllustrationButtons = new HGraphicButton[5];
     private String[] smallIllustrationPaths = {"Intro_illu_1.png", "Intro_illu_2.png", "Intro_illu_3.png", "Intro_illu_4.png", "Intro_illu_5.png"};
@@ -121,10 +121,10 @@ public class HelloTVXlet implements Xlet, HActionListener {
         System.out.println("Game Screen");
        
         scene.removeAll();
-                
+        ShowPuzzle();      
         HGraphicButton backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
         backButton.setBordersEnabled(false);
-        backButton.setBounds(210, 430, 164, 83);
+        backButton.setBounds(210, 480, 164, 83);
         backButton.setActionCommand("backButton");
         backButton.addHActionListener(this);
         scene.add(backButton);
@@ -132,7 +132,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         
         HGraphicButton restartButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_restart.png"));
         restartButton.setBordersEnabled(false);
-        restartButton.setBounds(370, 430, 164, 83);
+        restartButton.setBounds(370, 480, 164, 83);
         restartButton.setActionCommand("restartButton");
         restartButton.addHActionListener(this);
         scene.add(restartButton);
@@ -144,22 +144,32 @@ public class HelloTVXlet implements Xlet, HActionListener {
         scene.add(background);
  
         scene.repaint();
+        
     }
     
     private void ShowPuzzle() {
-        int[][] imgArray =
+        String link = "square.png";
+        int x = 300;
+        int y = 200;
+        String[][] imgArray =
         {
-             {0, 1, 2, 3},
-             {4, 5, 6, 7},
-             {8, 9, 10, 11},
-             {12, 13, 14, 15}
+             {link, link, link, link},
+             {link, link, link, link},
+             {link, link, link, link},
+             {link, link, link, link}
         };
         
         for(int i = 0; i < imgArray.length; i++) {
             for(int j = 0; j < imgArray[i].length; j++) {
+                imgBlock = new MijnComponent(imgArray[i][j], x, y);
+                scene.add(imgBlock);
+                x += 45;
                 System.out.print(imgArray[i][j] +  ", ");
             }
+            x = 300;
+            y += 45;
             System.out.println();
         }
+        scene.repaint();
     }
 }
