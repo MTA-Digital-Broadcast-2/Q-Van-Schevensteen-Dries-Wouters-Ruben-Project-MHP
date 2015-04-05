@@ -148,17 +148,18 @@ public class HelloTVXlet implements Xlet, HActionListener {
     }
     
     private void ShowPuzzle() {
-        String link = "square.png";
+        
+        // Get all image url's (all 16 parts)
+        String[][] imgArray = new String[4][4];
+        for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) { 
+                imgArray[i][j] = "puzzle1_part" + (j + i*4); 
+            }
+        }
+        
+        // Add all image blocks to scene
         int x = 300;
         int y = 200;
-        String[][] imgArray =
-        {
-             {link, link, link, link},
-             {link, link, link, link},
-             {link, link, link, link},
-             {link, link, link, link}
-        };
-        
         for(int i = 0; i < imgArray.length; i++) {
             for(int j = 0; j < imgArray[i].length; j++) {
                 imgBlock = new MijnComponent(imgArray[i][j], x, y);
