@@ -121,7 +121,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         System.out.println("Game Screen");
        
         scene.removeAll();
-        ShowPuzzle();      
+        ShowPuzzle(chosenIllustrationPath);      
         HGraphicButton backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
         backButton.setBordersEnabled(false);
         backButton.setBounds(210, 480, 164, 83);
@@ -147,28 +147,38 @@ public class HelloTVXlet implements Xlet, HActionListener {
         
     }
     
-    private void ShowPuzzle() {
+    private void ShowPuzzle(String n) {
+        
+        String puzzleNr = n.substring(11, 12);
         
         // Get all image url's (all 16 parts)
         String[][] imgArray = new String[4][4];
         for(int i = 0; i < 4; i++) {
             for(int j = 0; j < 4; j++) { 
-                imgArray[i][j] = "puzzle1_part" + (j + i*4); 
+                
+                int k = (j + i*4) + 1;
+                String counter = Integer.toString(k) ;
+                
+                if( k < 10 )
+                    counter = '0' + Integer.toString(k);
+                
+                imgArray[i][j] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png"; 
+                
             }
         }
         
         // Add all image blocks to scene
-        int x = 300;
-        int y = 200;
+        int x = 250;
+        int y = 150;
+        
         for(int i = 0; i < imgArray.length; i++) {
             for(int j = 0; j < imgArray[i].length; j++) {
                 imgBlock = new MijnComponent(imgArray[i][j], x, y);
                 scene.add(imgBlock);
-                x += 45;
-                System.out.print(imgArray[i][j] +  ", ");
+                x += 59;
             }
-            x = 300;
-            y += 45;
+            x = 250;
+            y += 59;
             System.out.println();
         }
         scene.repaint();
