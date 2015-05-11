@@ -121,7 +121,9 @@ public class HelloTVXlet implements Xlet, HActionListener {
         System.out.println("Game Screen");
        
         scene.removeAll();
-        ShowPuzzle(chosenIllustrationPath);      
+        
+        showPuzzle(chosenIllustrationPath); 
+
         HGraphicButton backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
         backButton.setBordersEnabled(false);
         backButton.setBounds(210, 480, 164, 83);
@@ -140,47 +142,120 @@ public class HelloTVXlet implements Xlet, HActionListener {
         backButton.setFocusTraversal(null, null, null, restartButton);
         restartButton.setFocusTraversal(null, null, backButton, null);
         
-        background = new MijnComponent("Play_mockup.png", 0, -35);
+        background = new MijnComponent("Play.png", 0, -35);
         scene.add(background);
  
         scene.repaint();
-        
     }
-    
-    private void ShowPuzzle(String n) {
+
+    String[][][] currentField = new String[4][4][2];
+    String[][][] solutionField = new String[4][4][2];
+
+    private void showPuzzle(String fullImagePath) {
+
+        String puzzleNr = fullImagePath.substring(11, 12);
         
-        String puzzleNr = n.substring(11, 12);
-        
+        fillSolutionField(puzzleNr);
+        randomizeCurrentField(puzzleNr);
+
+        drawCurrentField();
+    }
+
+    private void fillSolutionField(String puzzleNr) {
+
         // Get all image url's (all 16 parts)
-        String[][] imgArray = new String[4][4];
-        for(int i = 0; i < 4; i++) {
-            for(int j = 0; j < 4; j++) { 
+        for(int i = 0; i < solutionField.length; i++) {
+            for(int j = 0; j < solutionField[i].length; j++) {
                 
-                int k = (j + i*4) + 1;
-                String counter = Integer.toString(k) ;
+                int tileIndex = (j + i * 4) + 1;
+                String counter = Integer.toString(tileIndex);
                 
-                if( k < 10 )
-                    counter = '0' + Integer.toString(k);
+                if(tileIndex < 10) counter = '0' + Integer.toString(tileIndex);
                 
-                imgArray[i][j] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png"; 
+                solutionField[i][j][0] = counter;
+                solutionField[i][j][1] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png"; 
+
+                // System.out.println(currentField[i][j][0]);
+                // System.out.println(currentField[i][j][1]);
+                // System.out.println("--");
                 
             }
         }
+    }
+
+    private void randomizeCurrentField(String puzzleNr) {
+
+        int[] randomTileIndexes = generateRandomAndUniqueNumberArray(16);
+
+        for(int i = 0; i < currentField.length; i++) {
+            for(int j = 0; j < currentField[i].length; j++) {
+                
+                int tileIndex = randomTileIndexes[j + i * 4];
+
+                String counter = Integer.toString(tileIndex) ;
+                
+                if(tileIndex < 10) counter = '0' + Integer.toString(tileIndex);
+                
+                currentField[i][j][0] = counter;
+                currentField[i][j][1] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png"; 
+
+                System.out.println(currentField[i][j][0]);
+                System.out.println(currentField[i][j][1]);
+                System.out.println("--");
+                
+            }
+        }
+    }
+
+    private int[] generateRandomAndUniqueNumberArray(int range) {
+        int[] stack = new int[range];
+        for (int i = 0; i < range; i++)
+            stack[i] = generateRandomAndUniqueNumber(stack, range + 1);
+
+        return stack;
+    }
+
+    // Recursive function that keeps calling itself until a new unique number is found on the stack
+    private int generateRandomAndUniqueNumber(int[] stack, int range) {
+        int randomNum = (int)(Math.random()*range);
+        for (int i = 0; i < stack.length; i++)
+            if (stack[i] == randomNum) randomNum = generateRandomAndUniqueNumber(stack, range);
+
+        return randomNum;
+    }
+
+    private void drawCurrentField() {
+        int xStart = 250,
+            xAndYOffset = 59,
+            x = xStart,
+            y = 150;
         
-        // Add all image blocks to scene
-        int x = 250;
-        int y = 150;
-        
-        for(int i = 0; i < imgArray.length; i++) {
-            for(int j = 0; j < imgArray[i].length; j++) {
-                imgBlock = new MijnComponent(imgArray[i][j], x, y);
+        for(int i = 0; i < currentField.length; i++) {
+            for(int j = 0; j < currentField[i].length; j++) {
+
+                // HGraphicButton backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
+                // backButton.setBordersEnabled(false);
+                // backButton.setBounds(210, 480, 164, 83);
+                // backButton.setActionCommand("backButton");
+                // backButton.addHActionListener(this);
+                // scene.add(backButton);
+
+                imgBlock = new MijnComponent(currentField[i][j][1], x, y);
                 scene.add(imgBlock);
-                x += 59;
+
+                x += xAndYOffset;
             }
-            x = 250;
-            y += 59;
-            System.out.println();
+
+            x = xStart;
+            y += xAndYOffset;
         }
+
         scene.repaint();
     }
 }
+
+
+
+
+
+
