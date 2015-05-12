@@ -31,11 +31,6 @@ public class MijnComponent extends HComponent {
         this.setBounds(x, y, bmap.getWidth(null), bmap.getWidth(null));
     } 
     
-    public void Verplaats(int x, int y)
-    {
-        this.setBounds(x, y, bmap.getWidth(this), bmap.getHeight(this));
-    }
-    
     public void paint(Graphics g)
     {
         g.drawImage(bmap, 0,0,null);
