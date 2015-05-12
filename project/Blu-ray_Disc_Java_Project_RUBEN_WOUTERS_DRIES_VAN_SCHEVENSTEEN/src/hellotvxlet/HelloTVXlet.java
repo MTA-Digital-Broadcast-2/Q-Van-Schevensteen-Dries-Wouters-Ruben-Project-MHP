@@ -13,6 +13,9 @@ public class HelloTVXlet implements Xlet, HActionListener {
    
     private MijnComponent background;
 
+    String[][][] currentField = new String[4][4][2];
+    String[][][] solutionField = new String[4][4][2];
+
     private HGraphicButton backButton, restartButton;
     private HGraphicButton[] tiles;
 
@@ -49,6 +52,13 @@ public class HelloTVXlet implements Xlet, HActionListener {
         // game screen
         if(e.getActionCommand().equals("backButton")) startScreen();
         if(e.getActionCommand().equals("restartButton")) gameScreen();
+
+        for(int i = 0; i < solutionField.length; i++) {
+            for(int j = 0; j < solutionField[i].length; j++) {
+                if(e.getActionCommand().equals(solutionField[i][j][0])) tileClicked(solutionField[i][j][0]);
+            }
+        }
+
     }
     public void startXlet() {
        
@@ -135,9 +145,6 @@ public class HelloTVXlet implements Xlet, HActionListener {
         scene.repaint();
     }
 
-    String[][][] currentField = new String[4][4][2];
-    String[][][] solutionField = new String[4][4][2];
-
     private void showPuzzle(String fullImagePath) {
 
         String puzzleNr = fullImagePath.substring(11, 12);
@@ -214,7 +221,78 @@ public class HelloTVXlet implements Xlet, HActionListener {
         return randomNum;
     }
 
+    private void tileClicked(String tileIndex) {
+        System.out.println("tileClicked()");
+
+        checkIfTileShouldMoveAndMove(tileIndex);
+    }
+
+    private void checkIfTileShouldMoveAndMove(String tileIndex) {
+
+        int currentX = 0,
+            currentY = 0,
+            emptyX = 2,
+            emptyY = 2;
+
+        System.out.println(tileIndex + 1);
+
+        for(int i = 0; i < currentField.length; i++) {
+            for(int j = 0; j < currentField[i].length; j++) {
+                
+                if (currentField[i][j][0].equals(tileIndex)) {
+                    currentX = j;
+                    currentY = i;
+                    System.out.println(i);
+                    System.out.println(j);
+                }
+
+                if (currentField[i][j][0].equals("16")) {
+                    emptyX = j;
+                    emptyY = i;
+                    System.out.println(i);
+                    System.out.println(j);
+                }
+            }
+        }
+
+        if (currentX == emptyX && (currentY == emptyY + 1 || currentY == emptyY - 1) ||
+            currentY == emptyY && (currentX == emptyX + 1 || currentX == emptyX - 1)) {
+        
+            System.out.println("Switch tiles");
+
+            String tileName = new String(currentField[currentY][currentX][0]);
+            String tileImageName = new String(currentField[currentY][currentX][1]);
+            String emptyTileName = new String(currentField[emptyY][emptyX][0]);
+            // String emptyImageName = new String(currentField[emptyY][emptyX][1]);
+
+            currentField[currentY][currentX][0] = emptyTileName;
+            currentField[currentY][currentX][1] = "";
+            currentField[emptyY][emptyX][0] = tileName;
+            currentField[emptyY][emptyX][1] = tileImageName;
+
+            redrawCurrentField(Integer.parseInt(currentField[emptyY][emptyX][0]) - 1);
+
+        }
+    }
+
+    private void redrawCurrentField(int focusTile) {
+
+        scene.removeAll();
+        
+        drawCurrentField();
+
+        addBackAndRestartButtons();
+        
+        background = new MijnComponent("Play.png", 0, -35);
+        scene.add(background);
+
+        tiles[focusTile].requestFocus();
+
+        scene.repaint();
+    }
+
     private void drawCurrentField() {
+
         int xStart = 250,
             widthAndHeight = 59,
             x = xStart,
@@ -228,6 +306,8 @@ public class HelloTVXlet implements Xlet, HActionListener {
                 tiles[tileIndex] = new HGraphicButton(Toolkit.getDefaultToolkit().getImage(currentField[i][j][1]));
                 tiles[tileIndex].setBordersEnabled(false);
                 tiles[tileIndex].setBounds(x, y, widthAndHeight, widthAndHeight);
+                System.out.println(currentField[i][j][1]);
+                System.out.println(currentField[i][j][0]);
                 tiles[tileIndex].setActionCommand(currentField[i][j][0]);
                 tiles[tileIndex].addHActionListener(this);
                 scene.add(tiles[tileIndex]);
@@ -260,6 +340,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         tiles[13].setFocusTraversal(tiles[9], restartButton, tiles[12], tiles[14]);
         tiles[14].setFocusTraversal(tiles[10], restartButton, tiles[13], tiles[15]);
         tiles[15].setFocusTraversal(tiles[11], restartButton, tiles[14], tiles[12]);
+        backButton.requestFocus();
 
         scene.repaint();
     }
