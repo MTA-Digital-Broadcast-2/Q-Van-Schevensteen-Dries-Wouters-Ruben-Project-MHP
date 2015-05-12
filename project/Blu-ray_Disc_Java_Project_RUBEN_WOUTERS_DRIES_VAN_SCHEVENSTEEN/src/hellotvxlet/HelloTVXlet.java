@@ -11,7 +11,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     
     private HScene scene;
    
-    private MijnComponent background;
+    private MijnComponent background, solution, puzzle_bg;
     private MijnScore scoreTxt, gameOverTxt;
 
     String[][][] currentField = new String[4][4][2];
@@ -89,7 +89,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         playButton.requestFocus();
 
         for (int i = 0; i < smallIllustrationButtons.length; i++) {
-            smallIllustrationButtons[i] = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("Intro_illu_" + (i + 1) +".png"));
+            smallIllustrationButtons[i] = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("puzzle_images/illustrations/Intro_illu_" + (i + 1) +".png"));
             smallIllustrationButtons[i].setBordersEnabled(false);
             scene.add(smallIllustrationButtons[i]);
             
@@ -101,23 +101,23 @@ public class HelloTVXlet implements Xlet, HActionListener {
             HGraphicButton btn = smallIllustrationButtons[i];
             switch(i) {
                 case 0:
-                    btn.setBounds(20, 250, 138, 139);
+                    btn.setBounds(35, 250, 131, 152);
                     btn.setFocusTraversal( null, playButton, smallIllustrationButtons[4], smallIllustrationButtons[1]);
                     break;
                 case 1:
-                    btn.setBounds(158,250,134,139);
+                    btn.setBounds(166,250,129,152);
                     btn.setFocusTraversal(null, playButton, smallIllustrationButtons[0], smallIllustrationButtons[2]);
                     break;
                 case 2:
-                    btn.setBounds(292,250,134,139);
+                    btn.setBounds(295,250,129,152);
                     btn.setFocusTraversal(null, playButton, smallIllustrationButtons[1], smallIllustrationButtons[3]);
                     break;
                 case 3:
-                    btn.setBounds(426,250,134,139);
+                    btn.setBounds(424,250,129,152);
                     btn.setFocusTraversal(null, playButton, smallIllustrationButtons[2], smallIllustrationButtons[4]);
                     break;
                 case 4:
-                    btn.setBounds(560,250,138,139);
+                    btn.setBounds(553,250,134,152);
                     btn.setFocusTraversal(null, playButton, smallIllustrationButtons[3], smallIllustrationButtons[0]);
                     break;
                 default:
@@ -144,11 +144,12 @@ public class HelloTVXlet implements Xlet, HActionListener {
         
         updateScore();
         
+        puzzle_bg = new MijnComponent("puzzle_images/puzzle_bg.png", 245, 175);
+        scene.add(puzzle_bg);
+        
         background = new MijnComponent("Play.png", 0, -35);
         scene.add(background);
         
-        
- 
         scene.repaint();
     }
 
@@ -307,7 +308,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     private void drawCurrentField() {
 
         int xStart = 250,
-            widthAndHeight = 59,
+            widthAndHeight = 63,
             x = xStart,
             y = 180;
 
@@ -331,7 +332,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
             }
 
             x = xStart;
-            y += widthAndHeight;
+            y += widthAndHeight + 4;
         }
 
         addBackAndRestartButtons();
@@ -396,6 +397,10 @@ public class HelloTVXlet implements Xlet, HActionListener {
         else{
             // CODE FOR WHEN PUZZLE IS COMPLETED
         }
+        
+        String puzzleNr = chosenIllustrationPath.substring(11, 12);
+        solution = new MijnComponent("puzzle_images/images/puzzle" + puzzleNr + ".png", 255, 185);
+        scene.add(solution);
         
         background = new MijnComponent("Play.png", 0, -35);
         scene.add(background);

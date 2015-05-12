@@ -28,7 +28,7 @@ public class MijnComponent extends HComponent {
             System.out.println(e.toString());
         }
         
-        this.setBounds(x, y, bmap.getWidth(null), bmap.getWidth(null));
+        this.setBounds(x, y, 1000, 1000);
     } 
     
     public void paint(Graphics g)

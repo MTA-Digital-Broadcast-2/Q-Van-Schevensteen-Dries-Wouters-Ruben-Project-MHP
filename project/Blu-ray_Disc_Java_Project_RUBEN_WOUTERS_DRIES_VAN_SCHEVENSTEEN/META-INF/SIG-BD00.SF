@@ -1,17 +1,314 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: sE3Mghk/fa0lubvxXFBclA3nQtk=
+SHA1-Digest-Manifest: V0nIusZbtJZjWjJNL/MlvAX7KIk=
 
-Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: KI5/8mXBI/6RvMnJsXPnAwqk0hM=
+Name: puzzle_images/puzzle5/puzzle5_02.png
+SHA1-Digest: HnbqIrn9TCGGNc852upLaoiZ5Nc=
+
+Name: puzzle_images/puzzle2/puzzle2_11.png
+SHA1-Digest: OFtiJxzI4daJdQaIctrx/nr+lY0=
+
+Name: puzzle_images/puzzle5/puzzle5_16.png
+SHA1-Digest: UL+09lDW+pdtECwcdBhHEksu0Ho=
+
+Name: puzzle_images/puzzle1/puzzle1_11.png
+SHA1-Digest: TW5jI2EROyE3I/a7STW4zS347JM=
+
+Name: puzzle_images/puzzle3/puzzle3_01.png
+SHA1-Digest: oFlx+emQfuXtYUydB7NDYgTSKpQ=
+
+Name: puzzle_images/puzzle4/puzzle4_13.png
+SHA1-Digest: fJ4EYjE5ggHEX/CdqPPVDqPoFE4=
+
+Name: puzzle_images/puzzle2/puzzle2_07.png
+SHA1-Digest: gNTNJBHXphc0gtl81gpEgKv0tAY=
+
+Name: puzzle_images/puzzle4/puzzle4_03.png
+SHA1-Digest: u4Hou88mz9RjSYGeuAN/zxPKTYE=
+
+Name: hellotvxlet/bluray.HelloTVXlet.perm
+SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+
+Name: puzzle_images/puzzle1/puzzle1_07.png
+SHA1-Digest: Rkcx5uQ6cyXFc8L6rMSr6Auj33k=
+
+Name: puzzle_images/puzzle4/puzzle4_05.png
+SHA1-Digest: MWl+aeeftuTuO8bbljYBuYih6mQ=
+
+Name: puzzle_images/puzzle3/puzzle3_13.png
+SHA1-Digest: 6XQ21yYwATEKXhM3YjzStQ3Wxo4=
+
+Name: puzzle_images/puzzle4/puzzle4_14.png
+SHA1-Digest: 9j4yLym2TMI6DHaZN1XvGNQTgEc=
+
+Name: puzzle_images/puzzle2/puzzle2_03.png
+SHA1-Digest: uf11MC8armP22NxngZ2fSq3PVyg=
+
+Name: puzzle_images/puzzle1/puzzle1_04.png
+SHA1-Digest: 5nOTppstWd7KGZR8ydTcY8hTImc=
+
+Name: hellotvxlet/MijnComponent.class
+SHA1-Digest: 9gzLpI7KypiJo7Vv+C76DTmqNh0=
+
+Name: puzzle_images/Thumbs.db
+SHA1-Digest: lEMFQpEaM9NF83QyFRmKpPQQtpQ=
+
+Name: puzzle_images/puzzle4/puzzle4_08.png
+SHA1-Digest: 9rZJZd+QURX67rEw0MSy+agQWrk=
+
+Name: puzzle_images/puzzle3/puzzle3_03.png
+SHA1-Digest: pcWd8/SyRKTV28OOgvAJzXXtedc=
+
+Name: puzzle_images/puzzle3/puzzle3_08.png
+SHA1-Digest: dm/FXC5CgdjtS3/p3UliavE7fQU=
+
+Name: puzzle_images/puzzle2/puzzle2_08.png
+SHA1-Digest: 7kR2zuxhJKd9ZZ9dQuF4lbTWXgE=
+
+Name: puzzle_images/puzzle4/puzzle4_04.png
+SHA1-Digest: npnfdUs0uPgNRscQjnc2fYgr3ts=
+
+Name: puzzle_images/puzzle5/puzzle5_05.png
+SHA1-Digest: klaCuwL3/VCctkE+uWeVVRY4prk=
+
+Name: puzzle_images/puzzle3/puzzle3_06.png
+SHA1-Digest: OClbSQxYdAPQN23IQDgYHzibrG8=
+
+Name: puzzle_images/images/puzzle1.png
+SHA1-Digest: XzUP0qRIr6zNxJ6WRuAzoM7xZuE=
+
+Name: puzzle_images/puzzle4/puzzle4_10.png
+SHA1-Digest: sxp3+BWSxemefWloavU35ev4h9M=
+
+Name: puzzle_images/puzzle3/puzzle3_10.png
+SHA1-Digest: zevmf4M8VB6vXhyU6Bb2YhSb+38=
+
+Name: puzzle_images/puzzle2/puzzle2_06.png
+SHA1-Digest: JyGnzNbIlc7MJe2/Y6hPWQTnuD8=
+
+Name: puzzle_images/puzzle5/puzzle5_01.png
+SHA1-Digest: W14ZjbB86aukIALwnqFSMzg1MEU=
+
+Name: puzzle_images/puzzle1/puzzle1_03.png
+SHA1-Digest: 4witRZmmKaf2VNXB7U2tszrIgRA=
+
+Name: puzzle_images/puzzle4/puzzle4_06.png
+SHA1-Digest: RRa2TLe756/O9XP0P1/BjSrjvFE=
+
+Name: puzzle_images/puzzle3/puzzle3_16.png
+SHA1-Digest: fKt4s/YelW69YWviDZ8X8oKF13Y=
+
+Name: puzzle_images/puzzle4/puzzle4_15.png
+SHA1-Digest: jy8qM8SA13tH18h/gf15UeRAWHY=
+
+Name: puzzle_images/images/puzzle2.png
+SHA1-Digest: gZ1VBTbYGJ8TB94ey9GxCgERi2M=
+
+Name: puzzle_images/images/Original/puzzle5.png
+SHA1-Digest: tujCUXRXRiTVb8+nVpZoqQ3EpCg=
+
+Name: puzzle_images/puzzle3/puzzle3_09.png
+SHA1-Digest: ypQN1cKbWjPfDahkas2HIqRz+lM=
+
+Name: puzzle_images/puzzle5/puzzle5_13.png
+SHA1-Digest: waVR+gk4rLsW13faQ7zErY3/Sno=
+
+Name: puzzle_images/puzzle1/puzzle1_01.png
+SHA1-Digest: wyrIqs8a0AxqT/tqauV0q8MOboY=
+
+Name: puzzle_images/images/puzzle3.png
+SHA1-Digest: La+/4LC/wG6TQDp6G2PC3mWFh4Y=
+
+Name: puzzle_images/puzzle2/puzzle2_05.png
+SHA1-Digest: VFf6wnGMjo9HpG4zBsLWO0+S6EA=
+
+Name: puzzle_images/puzzle5/puzzle5_11.png
+SHA1-Digest: fEXJOq/wS8kCskk5WROhMIqJCbo=
+
+Name: puzzle_images/puzzle5/puzzle5_04.png
+SHA1-Digest: pLU5Wzb+CWhteU8uMA0IXRaiOxA=
+
+Name: puzzle_images/puzzle4/puzzle4_07.png
+SHA1-Digest: vsQDWn/yJFyaqKzD8ySTfDMVHzc=
 
 Name: hellotvxlet/MijnScore.class
 SHA1-Digest: GFS2NvAH8R2RfbYRKb+FPSNZIaY=
 
-Name: hellotvxlet/MijnComponent.class
-SHA1-Digest: r8BMw50IsMcqh27HDkBziuP1qyE=
+Name: puzzle_images/puzzle5/puzzle5_15.png
+SHA1-Digest: 3zknTYnyF3FYr38Cqk1LjOmrQpM=
 
-Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+Name: puzzle_images/illustrations/Intro_illu_1.png
+SHA1-Digest: O6E2EKzvUhqmxnY1IcsVLASKxxk=
+
+Name: puzzle_images/puzzle2/puzzle2_09.png
+SHA1-Digest: WHoqmR0bTxtmbLn3xZh75HSD9cE=
+
+Name: puzzle_images/illustrations/Intro_illu_3.png
+SHA1-Digest: X3qujyvJKurJL8As+PMbNlBVQcA=
+
+Name: puzzle_images/puzzle1/puzzle1_14.png
+SHA1-Digest: QgsIckVKkMiPMRZbWNvpFmBVrDY=
+
+Name: puzzle_images/puzzle4/puzzle4_16.png
+SHA1-Digest: UaOoI3qQPjnJDghgtRfFXTcsiu8=
+
+Name: puzzle_images/images/Original/puzzle6.png
+SHA1-Digest: 53+y4ESfduyYc2IkpRCZNDWmxJ0=
+
+Name: puzzle_images/puzzle5/puzzle5_03.png
+SHA1-Digest: hzpo/VhojTP7/2bUJ0OVowM/T5o=
+
+Name: puzzle_images/images/Original/puzzle3.png
+SHA1-Digest: KqPdby3RhFhtsaBXVTShx7Uw4u8=
+
+Name: puzzle_images/puzzle4/puzzle4_11.png
+SHA1-Digest: 2wEl5/sospJIm/gQcw0e4MbarnU=
+
+Name: puzzle_images/puzzle5/puzzle5_12.png
+SHA1-Digest: /V63hLIxlj016Hv18N9zV24CmQA=
+
+Name: puzzle_images/puzzle1/puzzle1_02.png
+SHA1-Digest: z3QzkMvz6mCgIDbGX4otM8/lNNk=
+
+Name: puzzle_images/images/Original/puzzle2.png
+SHA1-Digest: vCteLMzXHdbaTIJ0gwiuKHHrel4=
+
+Name: puzzle_images/illustrations/Intro_illu_2.png
+SHA1-Digest: de4rwGEyqyjQ/CoDdwdGF26KK3E=
+
+Name: puzzle_images/puzzle5/puzzle5_07.png
+SHA1-Digest: 3PNUtLWnRlAz9wAqHnn3UpvcB0g=
+
+Name: puzzle_images/puzzle1/puzzle1_06.png
+SHA1-Digest: AZ+ezhlik2M7DjTOsBzH+b72Ckc=
+
+Name: puzzle_images/images/Original/puzzle1.png
+SHA1-Digest: 3i7VohTvA0QnW5uKPvlAndJY37o=
+
+Name: puzzle_images/puzzle5/puzzle5_10.png
+SHA1-Digest: Dra1BHGzKXcQiAaMOiscBXY0Bgw=
+
+Name: puzzle_images/puzzle2/puzzle2_04.png
+SHA1-Digest: Y5OZDJVFhUiRriKV0cithuVSTd0=
+
+Name: puzzle_images/images/Original/puzzle4.png
+SHA1-Digest: v7URQZtTjzUsymH+x3+d/+GNOZU=
+
+Name: puzzle_images/images/puzzle4.png
+SHA1-Digest: 7CGm3cdYulNxS81Hl5lUFSLrjVY=
+
+Name: puzzle_images/puzzle3/puzzle3_05.png
+SHA1-Digest: OcCoL6QUO6fRQS+cdUtwbXfLVHo=
+
+Name: puzzle_images/puzzle2/puzzle2_01.png
+SHA1-Digest: Imk+ql4nHdhNqFaA2KQYGWehaD4=
+
+Name: puzzle_images/puzzle4/puzzle4_01.png
+SHA1-Digest: 4VgoD59GxdKCDIb8atPUdQ671qI=
+
+Name: puzzle_images/puzzle1/puzzle1_15.png
+SHA1-Digest: vNsguPSFE1QLMHoPNveKUK5oyUI=
+
+Name: puzzle_images/puzzle_bg.png
+SHA1-Digest: r+bdoQ96l7OdJBIz0yuPOsSYQTg=
+
+Name: puzzle_images/puzzle4/puzzle4_02.png
+SHA1-Digest: KsE9Qm+SmxC+YInvMY1I5XSPp48=
+
+Name: puzzle_images/puzzle3/puzzle3_04.png
+SHA1-Digest: /g+NJARpneV4UBz8z9KZQ9MR33o=
+
+Name: puzzle_images/puzzle1/puzzle1_12.png
+SHA1-Digest: 42gwMDac3ifWGZ4EEKQoooR84Lo=
+
+Name: puzzle_images/puzzle1/puzzle1_13.png
+SHA1-Digest: s88RveawposWXokZLWLpxP21x3o=
+
+Name: puzzle_images/puzzle2/puzzle2_12.png
+SHA1-Digest: h4oikJbvwSsIiKmAhnTBHrgMr9s=
+
+Name: puzzle_images/puzzle1/puzzle1_16.png
+SHA1-Digest: IYSgl2OWX/OUYS4MBpy8xt5ykXI=
+
+Name: puzzle_images/puzzle3/puzzle3_14.png
+SHA1-Digest: sIbP87iGDTM1qkMR9PbtIRoZYh4=
+
+Name: Thumbs.db
+SHA1-Digest: e8aauEtp5jl0gdqSjbgtIJO4nME=
+
+Name: puzzle_images/puzzle2/puzzle2_14.png
+SHA1-Digest: +xbyDOkH+r7uamvefh3UyLmN22U=
+
+Name: puzzle_images/puzzle1/puzzle1_10.png
+SHA1-Digest: qUJB3fR7WQvQzThbFkYG5q6kPPM=
+
+Name: puzzle_images/puzzle2/puzzle2_02.png
+SHA1-Digest: iGKMizjPPvmvPZqpVHLjhfAn0b4=
+
+Name: puzzle_images/puzzle2/puzzle2_15.png
+SHA1-Digest: RTyEPBwHSx6wz1wXTdA0D/xeFV4=
+
+Name: puzzle_images/puzzle3/puzzle3_02.png
+SHA1-Digest: tViprDt8gFTKpDIyEXnA4NiCKjY=
+
+Name: hellotvxlet/HelloTVXlet.class
+SHA1-Digest: B36x0lgW2pBxhvJyENOLDznrGA8=
+
+Name: puzzle_images/puzzle3/puzzle3_11.png
+SHA1-Digest: LN5KPVt9MCMDCWT0dPfAhCNIySo=
+
+Name: puzzle_images/illustrations/Intro_illu_4.png
+SHA1-Digest: q0HyacwRPF8np5c+MyLfm25f8A4=
+
+Name: puzzle_images/puzzle2/puzzle2_16.png
+SHA1-Digest: 76ecZ0arMX+NSt6a4hWQE0Fs4Io=
+
+Name: puzzle_images/puzzle5/puzzle5_14.png
+SHA1-Digest: m9SvoKJtUph7ToDafT8QwF0vp7I=
+
+Name: puzzle_images/puzzle2/puzzle2_13.png
+SHA1-Digest: /P1XHOWYeudIAdMWwTinM9Jvpms=
+
+Name: puzzle_images/puzzle5/puzzle5_06.png
+SHA1-Digest: vgiTdfA9s/FMHj4F4mUKC/3flNg=
+
+Name: puzzle_images/puzzle3/puzzle3_15.png
+SHA1-Digest: okvEjKo5WlfCxwUaThPl/kZe7XY=
+
+Name: puzzle_images/puzzle1/puzzle1_09.png
+SHA1-Digest: 4wTzZ6dX2wmRM2AXExQM1EsPpYs=
+
+Name: puzzle_images/puzzle5/puzzle5_08.png
+SHA1-Digest: mgHwtNmZi9+v2T4aGF6Bc0LjC2M=
+
+Name: puzzle_images/puzzle5/puzzle5_09.png
+SHA1-Digest: 6LtCK2Rq46DOBEVTZXB7taN8ogI=
+
+Name: puzzle_images/puzzle4/puzzle4_12.png
+SHA1-Digest: JvDpE+snFYkhnfiQMZ5D4AGqdJw=
+
+Name: puzzle_images/puzzle2/puzzle2_10.png
+SHA1-Digest: E7cl/ikYHCDS9VAEwHFF2kcsSU0=
+
+Name: puzzle_images/puzzle4/puzzle4_09.png
+SHA1-Digest: zrEwSxckGW1cZC2nfS44CIM3RPc=
+
+Name: puzzle_images/images/puzzle5.png
+SHA1-Digest: sMc+piA1c3lNXwzkSOs8jPPy46A=
+
+Name: puzzle_images/puzzle1/puzzle1_05.png
+SHA1-Digest: QyW4MBvrysYbCT9QnRRThrEvJaY=
+
+Name: puzzle_images/puzzle3/puzzle3_12.png
+SHA1-Digest: ftJE8tskhnsS1Ui1COBGf14YdBc=
+
+Name: puzzle_images/puzzle1/puzzle1_08.png
+SHA1-Digest: Blcx5axFmsXLB9eVcsjGvL4pprs=
+
+Name: puzzle_images/illustrations/Intro_illu_5.png
+SHA1-Digest: QUHsux9/3Gi8zBVvWl4uKp2Xg2Q=
+
+Name: puzzle_images/puzzle3/puzzle3_07.png
+SHA1-Digest: cSZo1WylpfnLyVWftmceAMa2Uhg=
 
