@@ -12,71 +12,71 @@ public class HelloTVXlet implements Xlet, HActionListener {
     private HScene scene;
    
     private MijnComponent background, solution, puzzle_bg;
+    
     private MijnScore scoreTxt, gameOverTxt;
+    private int score, startScore;
 
-    String[][][] currentField = new String[4][4][2];
-    String[][][] solutionField = new String[4][4][2];
+    String[][][] currentField, solutionField;
 
     private HGraphicButton backButton, restartButton;
     private HGraphicButton[] tiles;
 
-    private HGraphicButton[] smallIllustrationButtons = new HGraphicButton[5];
+    private HGraphicButton[] smallIllustrationButtons;
     private String[] smallIllustrationPaths = {"Intro_illu_1.png", "Intro_illu_2.png", "Intro_illu_3.png", "Intro_illu_4.png", "Intro_illu_5.png"};
-    private String chosenIllustrationPath = smallIllustrationPaths[0];
-    
-    private int score = 5;
+    private String chosenIllustrationPath;
     
     public HelloTVXlet() {
+
+        score = startScore = 50;
+
+        currentField = new String[4][4][2];
+        solutionField = new String[4][4][2];
+        
         tiles = new HGraphicButton[16];
+
+        smallIllustrationButtons = new HGraphicButton[5];
+        chosenIllustrationPath = smallIllustrationPaths[0];
     }
 
     public void initXlet(XletContext context) {
         scene = HSceneFactory.getInstance().getDefaultHScene();
 
-        startScreen();
+        showStartScreen();
         
         scene.validate();
         scene.setVisible(true);
     }
 
+    public void startXlet() {}
+    public void pauseXlet() {}
+    public void destroyXlet(boolean unconditional) {}
+
     public void actionPerformed(ActionEvent e) {
-//        System.out.println(e.getActionCommand());
+        //System.out.println(e.getActionCommand());
         
         // start screen
-        if(e.getActionCommand().equals("playButton")) gameScreen();
+        if(e.getActionCommand().equals("playButton")) showGameScreen();
         
-        for (int i = 0; i < smallIllustrationPaths.length; i++) {
-            if(e.getActionCommand().equals("smallIllustrationButton" + i)) {
+        for (int i = 0; i < smallIllustrationPaths.length; i++)
+            if(e.getActionCommand().equals("smallIllustrationButton" + i)) 
                 chosenIllustrationPath = smallIllustrationPaths[i];
-//                System.out.println(chosenIllustrationPath);
-            }
-        }
         
         // game screen
-        if(e.getActionCommand().equals("backButton")) startScreen();
-        if(e.getActionCommand().equals("restartButton")) gameScreen();
+        if(e.getActionCommand().equals("backButton")) showStartScreen();
+        if(e.getActionCommand().equals("restartButton")) showGameScreen();
 
-        for(int i = 0; i < solutionField.length; i++) {
-            for(int j = 0; j < solutionField[i].length; j++) {
-                if(e.getActionCommand().equals(solutionField[i][j][0])) tileClicked(solutionField[i][j][0]);
-            }
-        }
-
-    }
-    public void startXlet() {
-       
+        for(int i = 0; i < solutionField.length; i++)
+            for(int j = 0; j < solutionField[i].length; j++)
+                if(e.getActionCommand().equals(solutionField[i][j][0])) 
+                    tileClicked(solutionField[i][j][0]);
     }
 
-    public void pauseXlet() {
-     
-    }
+    /*
+    * Show screens functions
+    */
 
-    public void destroyXlet(boolean unconditional) {
-     
-    }
-    
-    private void startScreen() {
-        System.out.println("Start Screen");
+    private void showStartScreen() {
+        System.out.println("showStartScreen()");
         
         scene.removeAll();
         
@@ -133,179 +133,85 @@ public class HelloTVXlet implements Xlet, HActionListener {
         scene.repaint();
     }
 
-    private void gameScreen() {
-//        System.out.println("Game Screen");
-        score = 5;
-        scene.removeAll();
-        
-        showPuzzle(chosenIllustrationPath); 
+    private void showGameScreen() {
+        System.out.println("showGameScreen()");
 
+        score = startScore;
+
+        scene.removeAll();
+    
+        addPuzzleField(chosenIllustrationPath); 
+    
+        addGameScreenComponents();
+        
+        scene.repaint();
+    }
+
+    /*
+    * Show game screen helper functions
+    */
+
+    private void addGameScreenComponents() {
+        
+        addScore();
         addBackAndRestartButtons();
-        
-        updateScore();
-        
+
         puzzle_bg = new MijnComponent("puzzle_images/puzzle_bg.png", 245, 175);
         scene.add(puzzle_bg);
         
         background = new MijnComponent("Play.png", 0, -35);
         scene.add(background);
-        
-        scene.repaint();
     }
 
-    
-    private void showPuzzle(String fullImagePath) {
+    private void addScore() {
+        String strScore = Integer.toString(score);
+        scoreTxt = new MijnScore("Score: " + strScore, 325, 150);
+        scene.add(scoreTxt);
+    }
 
+    private void addBackAndRestartButtons() {
+        backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
+        backButton.setBordersEnabled(false);
+        backButton.setBounds(210, 480, 164, 83);
+        backButton.setActionCommand("backButton");
+        backButton.addHActionListener(this);
+        scene.add(backButton);
+        backButton.requestFocus();
+        
+        restartButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_restart.png"));
+        restartButton.setBordersEnabled(false);
+        restartButton.setBounds(370, 480, 164, 83);
+        restartButton.setActionCommand("restartButton");
+        restartButton.addHActionListener(this);
+        scene.add(restartButton);
+        
+        backButton.setFocusTraversal(tiles[0], tiles[0], null, restartButton);
+        restartButton.setFocusTraversal(tiles[0], tiles[0], backButton, null);
+    }
+
+    private void addPuzzleField(String fullImagePath) {
         String puzzleNr = fullImagePath.substring(11, 12);
         
-        fillSolutionField(puzzleNr);
-        randomizeCurrentField(puzzleNr);
+        initSolutionField(puzzleNr);
+        initCurrentField(puzzleNr);
 
-        drawCurrentField();
+        drawPuzzleField();
     }
 
-    private void fillSolutionField(String puzzleNr) {
-
-        // Get all image url's (all 16 parts)
-        for(int i = 0; i < solutionField.length; i++) {
-            for(int j = 0; j < solutionField[i].length; j++) {
-                
-                int tileIndex = (j + i * 4) + 1;
-                String counter = Integer.toString(tileIndex);
-                
-                if(tileIndex < 10) counter = '0' + Integer.toString(tileIndex);
-                
-                solutionField[i][j][0] = counter;
-                solutionField[i][j][1] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png"; 
-
-                // System.out.println(currentField[i][j][0]);
-                // System.out.println(currentField[i][j][1]);
-                // System.out.println("--");
-                
-            }
-        }
-    }
-
-    private void randomizeCurrentField(String puzzleNr) {
-
-        int[] randomTileIndexes = generateRandomAndUniqueNumberArray(16);
-
-        for(int i = 0; i < currentField.length; i++) {
-            for(int j = 0; j < currentField[i].length; j++) {
-                
-                int tileIndex = randomTileIndexes[j + i * 4];
-
-                String counter = Integer.toString(tileIndex) ;
-                
-                if(tileIndex < 10) counter = '0' + Integer.toString(tileIndex);
-                
-                currentField[i][j][0] = counter;
-                currentField[i][j][1] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png";
-
-                if(tileIndex == 16)
-                    currentField[i][j][1] = "";
-
-                // System.out.println(currentField[i][j][0]);
-                // System.out.println(currentField[i][j][1]);
-                // System.out.println("--");
-                
-            }
-        }
-    }
-
-    private int[] generateRandomAndUniqueNumberArray(int range) {
-        int[] stack = new int[range];
-        for (int i = 0; i < range; i++)
-            stack[i] = generateRandomAndUniqueNumber(stack, range + 1);
-
-        return stack;
-    }
-
-    // Recursive function that keeps calling itself until a new unique number is found on the stack
-    private int generateRandomAndUniqueNumber(int[] stack, int range) {
-        int randomNum = (int)(Math.random()*range);
-        for (int i = 0; i < stack.length; i++)
-            if (stack[i] == randomNum) randomNum = generateRandomAndUniqueNumber(stack, range);
-
-        return randomNum;
-    }
-
-    private void tileClicked(String tileIndex) {
-//        System.out.println("tileClicked()");
-        checkIfTileShouldMoveAndMove(tileIndex);
-    }
-
-    private void checkIfTileShouldMoveAndMove(String tileIndex) {
-
-        int currentX = 0,
-            currentY = 0,
-            emptyX = 2,
-            emptyY = 2;
-
-//        System.out.println(tileIndex + 1);
-
-        for(int i = 0; i < currentField.length; i++) {
-            for(int j = 0; j < currentField[i].length; j++) {
-                
-                if (currentField[i][j][0].equals(tileIndex)) {
-                    currentX = j;
-                    currentY = i;
-//                    System.out.println(i);
-//                    System.out.println(j);
-                }
-
-                if (currentField[i][j][0].equals("16")) {
-                    emptyX = j;
-                    emptyY = i;
-//                    System.out.println(i);
-//                    System.out.println(j);
-                }
-            }
-        }
-
-        if (currentX == emptyX && (currentY == emptyY + 1 || currentY == emptyY - 1) ||
-            currentY == emptyY && (currentX == emptyX + 1 || currentX == emptyX - 1)) {
-        
-//            System.out.println("Switch tiles");
-               
-            score -= 10;
-            System.out.println("Current score: " + score);
-            
-            String tileName = new String(currentField[currentY][currentX][0]);
-            String tileImageName = new String(currentField[currentY][currentX][1]);
-            String emptyTileName = new String(currentField[emptyY][emptyX][0]);
-            // String emptyImageName = new String(currentField[emptyY][emptyX][1]);
-
-            currentField[currentY][currentX][0] = emptyTileName;
-            currentField[currentY][currentX][1] = "";
-            currentField[emptyY][emptyX][0] = tileName;
-            currentField[emptyY][emptyX][1] = tileImageName;
-
-            redrawCurrentField(Integer.parseInt(currentField[emptyY][emptyX][0]) - 1);
-        }
-        
-        if( score < 0){
-            endGame(score);
-        }
-    }
-
-    private void redrawCurrentField(int focusTile) {
-
+    private void reAddPuzzleField (int focusTile) {
         scene.removeAll();
         
-        drawCurrentField();
+        drawPuzzleField();
+        addGameScreenComponents();
 
-        addBackAndRestartButtons();
-        updateScore();
-        background = new MijnComponent("Play.png", 0, -35);
-        scene.add(background);
+        addScore();
 
         tiles[focusTile].requestFocus();
 
         scene.repaint();
     }
 
-    private void drawCurrentField() {
+    private void drawPuzzleField() {
 
         int xStart = 250,
             widthAndHeight = 63,
@@ -320,8 +226,6 @@ public class HelloTVXlet implements Xlet, HActionListener {
                 tiles[tileIndex] = new HGraphicButton(Toolkit.getDefaultToolkit().getImage(currentField[i][j][1]));
                 tiles[tileIndex].setBordersEnabled(false);
                 tiles[tileIndex].setBounds(x, y, widthAndHeight, widthAndHeight);
-//                System.out.println(currentField[i][j][1]);
-//                System.out.println(currentField[i][j][0]);
                 tiles[tileIndex].setActionCommand(currentField[i][j][0]);
                 tiles[tileIndex].addHActionListener(this);
                 scene.add(tiles[tileIndex]);
@@ -335,7 +239,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
             y += widthAndHeight + 4;
         }
 
-        addBackAndRestartButtons();
+        addGameScreenComponents();
 
         // UP, DOWN, LEFT, RIGHT
         tiles[0].setFocusTraversal(restartButton, tiles[4], tiles[3], tiles[1]);
@@ -359,44 +263,135 @@ public class HelloTVXlet implements Xlet, HActionListener {
         scene.repaint();
     }
 
-    private void addBackAndRestartButtons() {
-        backButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_back.png"));
-        backButton.setBordersEnabled(false);
-        backButton.setBounds(210, 480, 164, 83);
-        backButton.setActionCommand("backButton");
-        backButton.addHActionListener(this);
-        scene.add(backButton);
-        backButton.requestFocus();
-        
-        restartButton = new HGraphicButton(Toolkit.getDefaultToolkit().getImage("btn_restart.png"));
-        restartButton.setBordersEnabled(false);
-        restartButton.setBounds(370, 480, 164, 83);
-        restartButton.setActionCommand("restartButton");
-        restartButton.addHActionListener(this);
-        scene.add(restartButton);
-        
-        backButton.setFocusTraversal(tiles[0], tiles[0], null, restartButton);
-        restartButton.setFocusTraversal(tiles[0], tiles[0], backButton, null);
+    private void initSolutionField(String puzzleNr) {
+
+        // Get all image url's (all 16 parts)
+        for(int i = 0; i < solutionField.length; i++) {
+            for(int j = 0; j < solutionField[i].length; j++) {
+                
+                int tileIndex = (j + i * 4) + 1;
+                String counter = Integer.toString(tileIndex);
+                
+                if(tileIndex < 10) counter = '0' + Integer.toString(tileIndex);
+                
+                solutionField[i][j][0] = counter;
+                solutionField[i][j][1] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png"; 
+            }
+        }
     }
-    
-    private void updateScore(){
-        String strScore = Integer.toString(score);
-        scoreTxt = new MijnScore("Score: " + strScore, 325, 150);
-        scene.add(scoreTxt);
+
+    private void initCurrentField(String puzzleNr) {
+
+        int[] randomTileIndexes = generateRandomAndUniqueNumberArray(16);
+
+        for(int i = 0; i < currentField.length; i++) {
+            for(int j = 0; j < currentField[i].length; j++) {
+                
+                int tileIndex = randomTileIndexes[j + i * 4];
+
+                String counter = Integer.toString(tileIndex) ;
+                
+                if(tileIndex < 10) counter = '0' + Integer.toString(tileIndex);
+                
+                currentField[i][j][0] = counter;
+                currentField[i][j][1] = "/puzzle_images/" + "puzzle" + puzzleNr + "/puzzle" + puzzleNr + "_" + counter + ".png";
+
+                if(tileIndex == 16)
+                    currentField[i][j][1] = "";
+            }
+        }
+    }
+
+    private int[] generateRandomAndUniqueNumberArray(int range) {
+        int[] stack = new int[range];
+        for (int i = 0; i < range; i++)
+            stack[i] = generateRandomAndUniqueNumber(stack, range + 1);
+
+        return stack;
+    }
+
+    // Recursive function that keeps calling itself until a new unique number is found on the stack
+    private int generateRandomAndUniqueNumber(int[] stack, int range) {
+        int randomNum = (int)(Math.random()*range);
+        for (int i = 0; i < stack.length; i++)
+            if (stack[i] == randomNum) randomNum = generateRandomAndUniqueNumber(stack, range);
+
+        return randomNum;
+    }
+
+    /* 
+    * Puzzle field functions
+    */
+
+    private void tileClicked(String tileIndex) {
+        System.out.println("tileClicked()");
+        checkIfTileShouldMoveAndMove(tileIndex);
+        if(checkIfAllTilesAreInPlace()) 
+            endGame(score);
+    }
+
+    private void checkIfTileShouldMoveAndMove(String tileIndex) {
+
+        int currentX = 0,
+            currentY = 0,
+            emptyX = 2,
+            emptyY = 2;
+
+        // System.out.println(tileIndex + 1);
+
+        for(int i = 0; i < currentField.length; i++) {
+            for(int j = 0; j < currentField[i].length; j++) {
+                
+                if (currentField[i][j][0].equals(tileIndex)) {
+                    currentX = j;
+                    currentY = i;
+                }
+
+                if (currentField[i][j][0].equals("16")) {
+                    emptyX = j;
+                    emptyY = i;
+                }
+            }
+        }
+
+        if (currentX == emptyX && (currentY == emptyY + 1 || currentY == emptyY - 1) ||
+            currentY == emptyY && (currentX == emptyX + 1 || currentX == emptyX - 1)) {
+        
+            // System.out.println("Switch tiles");
+               
+            score -= 10;
+            System.out.println("Current score: " + score);
+
+            currentField[emptyY][emptyX][0] = new String(currentField[currentY][currentX][0]);
+            currentField[emptyY][emptyX][1] = new String(currentField[currentY][currentX][1]);
+            currentField[currentY][currentX][0] = "16";
+            currentField[currentY][currentX][1] = "";
+
+            reAddPuzzleField(Integer.parseInt(currentField[emptyY][emptyX][0]) - 1);
+        }
+        
+        if(score <= 0) endGame(score);
+    }
+
+    private boolean checkIfAllTilesAreInPlace() {
+        for(int i = 0; i < currentField.length; i++) {
+            for(int j = 0; j < currentField[i].length; j++) {
+
+                if(currentField[i][j][0].equals(solutionField[i][j][0]))
+                    return false;
+            }
+        }
+
+        return true;
     }
     
     private void endGame(int score){
         scene.removeAll();
         
-        if(score <= 0){
-            gameOverTxt = new MijnScore("Aw, game over! Try again!", 250, 150);
-            scene.add(gameOverTxt);
-            
-            addBackAndRestartButtons();
-        }
-        else{
-            // CODE FOR WHEN PUZZLE IS COMPLETED
-        }
+        gameOverTxt = new MijnScore("Game over! Score: " + Integer.toString(score), 250, 150);
+        scene.add(gameOverTxt);
+
+        addBackAndRestartButtons();
         
         String puzzleNr = chosenIllustrationPath.substring(11, 12);
         solution = new MijnComponent("puzzle_images/images/puzzle" + puzzleNr + ".png", 255, 185);

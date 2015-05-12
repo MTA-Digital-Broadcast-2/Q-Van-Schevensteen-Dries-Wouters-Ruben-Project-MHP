@@ -1,7 +1,7 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: V0nIusZbtJZjWjJNL/MlvAX7KIk=
+SHA1-Digest-Manifest: ahIxFLMki3h7mQl+vTTlCFon7x0=
 
 Name: puzzle_images/puzzle5/puzzle5_02.png
 SHA1-Digest: HnbqIrn9TCGGNc852upLaoiZ5Nc=
@@ -28,7 +28,7 @@ Name: puzzle_images/puzzle4/puzzle4_03.png
 SHA1-Digest: u4Hou88mz9RjSYGeuAN/zxPKTYE=
 
 Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+SHA1-Digest: Iz2EmX/hIvVXbO3PX0e6hezSY28=
 
 Name: puzzle_images/puzzle1/puzzle1_07.png
 SHA1-Digest: Rkcx5uQ6cyXFc8L6rMSr6Auj33k=
@@ -189,6 +189,9 @@ SHA1-Digest: 3i7VohTvA0QnW5uKPvlAndJY37o=
 Name: puzzle_images/puzzle5/puzzle5_10.png
 SHA1-Digest: Dra1BHGzKXcQiAaMOiscBXY0Bgw=
 
+Name: Play.png
+SHA1-Digest: QSm82ueW/8B/lXLIjlLxg8G/N38=
+
 Name: puzzle_images/puzzle2/puzzle2_04.png
 SHA1-Digest: Y5OZDJVFhUiRriKV0cithuVSTd0=
 
@@ -234,9 +237,6 @@ SHA1-Digest: IYSgl2OWX/OUYS4MBpy8xt5ykXI=
 Name: puzzle_images/puzzle3/puzzle3_14.png
 SHA1-Digest: sIbP87iGDTM1qkMR9PbtIRoZYh4=
 
-Name: Thumbs.db
-SHA1-Digest: e8aauEtp5jl0gdqSjbgtIJO4nME=
-
 Name: puzzle_images/puzzle2/puzzle2_14.png
 SHA1-Digest: +xbyDOkH+r7uamvefh3UyLmN22U=
 
@@ -253,7 +253,7 @@ Name: puzzle_images/puzzle3/puzzle3_02.png
 SHA1-Digest: tViprDt8gFTKpDIyEXnA4NiCKjY=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: B36x0lgW2pBxhvJyENOLDznrGA8=
+SHA1-Digest: BEIHmKhkhYeVfkNwj3zBveS5evo=
 
 Name: puzzle_images/puzzle3/puzzle3_11.png
 SHA1-Digest: LN5KPVt9MCMDCWT0dPfAhCNIySo=
