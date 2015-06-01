@@ -326,7 +326,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     private void tileClicked(String tileIndex) {
         System.out.println("tileClicked()");
         checkIfTileShouldMoveAndMove(tileIndex);
-        if(checkIfAllTilesAreInPlace()) 
+        if(checkIfAllTilesAreInPlace() || score <= 0) 
             endGame(score);
     }
 
@@ -369,15 +369,13 @@ public class HelloTVXlet implements Xlet, HActionListener {
 
             reAddPuzzleField(Integer.parseInt(currentField[emptyY][emptyX][0]) - 1);
         }
-        
-        if(score <= 0) endGame(score);
     }
 
     private boolean checkIfAllTilesAreInPlace() {
         for(int i = 0; i < currentField.length; i++) {
             for(int j = 0; j < currentField[i].length; j++) {
 
-                if(currentField[i][j][0].equals(solutionField[i][j][0]))
+                if(! currentField[i][j][0].equals(solutionField[i][j][0]))
                     return false;
             }
         }
