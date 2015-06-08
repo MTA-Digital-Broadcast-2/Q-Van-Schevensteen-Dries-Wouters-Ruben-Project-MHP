@@ -27,7 +27,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     
     public HelloTVXlet() {
 
-        score = startScore = 50;
+        score = startScore = 200;
 
         currentField = new String[4][4][2];
         solutionField = new String[4][4][2];
@@ -206,7 +206,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
 
         addScore();
 
-        tiles[focusTile].requestFocus();
+        tiles[0].requestFocus();
 
         scene.repaint();
     }
